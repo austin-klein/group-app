@@ -6,6 +6,7 @@ const connectDB = require("./db");
 const errorHandler = require("./middleware/error");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
+const dashboardRoutes = require("./routes/dashboard");
 const notFound = require("./middleware/not-found");
 
 // connect to database
@@ -18,6 +19,7 @@ app.use(express.json());
 // routes middleware
 app.use(authRoutes);
 app.use(userRoutes);
+app.use(dashboardRoutes);
 
 // not found & error middleware
 app.use(notFound);

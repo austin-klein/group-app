@@ -1,17 +1,17 @@
 // imports
 import React, { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./profile.css";
 import axios from "../../utils/axios";
 
-// component
 export default function Login() {
-  // component logic
+
   const [name, setName] = useState("");
   const [users, setUsers] = useState([]);
   const groupId = localStorage.getItem("groupId");
   const history = useHistory();
 
+  // get all users
   useEffect(() => {
     async function getUsers() {
       const config = {
@@ -32,7 +32,7 @@ export default function Login() {
       }
     }
     getUsers();
-  }, []);
+  }, [groupId]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -43,39 +43,42 @@ export default function Login() {
     };
 
     try {
-      const { data } = await axios.post(
+      await axios.post(
         "/api/users",
         { name, groupId },
         config
       );
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
   }
 
-  function userRoute(userId) {
-    console.log(userId);
+  // route to user page
+  function userRoute(userId, name) {
+
     localStorage.setItem("userId", userId);
+    localStorage.setItem("owner", name);
     history.push(`/dashboard/${userId}`);
   }
 
+  // logout and clear storage
   function logout() {
     localStorage.removeItem("authToken");
     localStorage.removeItem("groupId");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("owner");
     history.push("/");
   }
 
-  // component JSX
   return (
-    <>
-      <h1>Profile Page</h1>
+    <section className="profile">
+      <h1>Profiles for </h1>
       <div className="profiles">
         {users.map((user) => {
           return (
-            <button
+            <button className="profiles"
               onClick={() => {
-                userRoute(user._id);
+                userRoute(user._id, user.name);
               }}
               key={user._id}
             >
@@ -84,6 +87,7 @@ export default function Login() {
           );
         })}
       </div>
+      <h1>Add a profile</h1>
       <form
         onSubmit={(e) => {
           handleSubmit(e);
@@ -99,13 +103,13 @@ export default function Login() {
         />
         <button type="submit">Submit</button>
       </form>
-      <button
+      <button style={{ background: "red" }}
         onClick={() => {
           logout();
         }}
       >
         LOGOUT
       </button>
-    </>
+    </section>
   );
 }

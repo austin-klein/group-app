@@ -1,16 +1,16 @@
 // imports
 import React, { useState } from "react";
 import "./register.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import axios from "../../utils/axios";
 
-// component
 export default function Login() {
-  // component logic
+
   const [groupName, setGroupName] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
 
+  // register function
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -33,10 +33,9 @@ export default function Login() {
     }
   }
 
-  // component JSX
   return (
-    <>
-      <h1>Register Page</h1>
+    <section className="register">
+      <h1>Register</h1>
       <form
         onSubmit={(e) => {
           handleSubmit(e);
@@ -60,6 +59,7 @@ export default function Login() {
         />
         <button type="submit">Submit</button>
       </form>
-    </>
+      <Link to="/login">Already have an account? Login</Link>
+    </section>
   );
 }

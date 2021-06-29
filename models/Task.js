@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const TaskSchema = new mongoose.Schema({
   groupId: String,
   userId: String,
+  owner: String,
   name: String,
   completed: Boolean,
 });

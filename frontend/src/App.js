@@ -12,16 +12,18 @@ import personalDashboard from "./components/personalDashboard/PersonalDashboard"
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/dashboard/:id" component={personalDashboard} />
-      </Switch>
-    </Router>
+    <div className="wrapper">
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboard/:id" component={personalDashboard} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

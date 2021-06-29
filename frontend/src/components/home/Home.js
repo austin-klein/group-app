@@ -6,10 +6,14 @@ import { Link } from 'react-router-dom';
 // component
 export default function Home() {
     return (
-        <>
-            <h1>Homepage</h1>
-            <Link to="/login">Login</Link>
-            <Link to="/Register">Register</Link>
-        </>
+        <section className="home">
+            <h1>Welcome to Groups</h1>
+            <div className="links">
+                <Link to="/login">Login</Link>
+                <Link to="/Register">Register</Link>
+            </div>
+
+
+        </section>
     )
 }

@@ -34,7 +34,7 @@ export default function Login() {
   }
 
   return (
-    <section className="register">
+    <section className="page">
       <h1>Register</h1>
       <form
         onSubmit={(e) => {

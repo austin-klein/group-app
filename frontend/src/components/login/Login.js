@@ -36,7 +36,7 @@ export default function Login() {
   }
 
   return (
-    <section className="login">
+    <section className="page">
       <h1>Login Page</h1>
       <form
         onSubmit={(e) => {

@@ -29,12 +29,13 @@ exports.getUserTasks = asyncWrapper(async (req, res, next) => {
 // add task
 exports.addTask = asyncWrapper(async (req, res, next) => {
   const { groupId, userId, owner, name } = req.body;
-
+  const completed = false;
   const task = await Task.create({
     groupId,
     userId,
     owner,
     name,
+    completed
   });
 
   if (!task) {

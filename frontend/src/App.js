@@ -7,23 +7,27 @@ import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import Profile from "./components/profile/Profile";
-import Dashboard from "./components/dasboard/Dashboard";
-import personalDashboard from "./components/personalDashboard/PersonalDashboard";
+import AddProfile from "./components/profile/AddProfile";
+import Dashboard from "./components/dashboard/Dashboard";
+import PersonalDashboard from "./components/dashboard/PersonalDashboard";
+import AddTask from "./components/AddTask";
 
 function App() {
   return (
-    <div className="wrapper">
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/dashboard/:id" component={personalDashboard} />
-        </Switch>
-      </Router>
-    </div>
+
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/add-profile" component={AddProfile} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/dashboard/:id" component={PersonalDashboard} />
+        <Route exact path="/add-task" component={AddTask} />
+      </Switch>
+    </Router>
+
   );
 }
 
